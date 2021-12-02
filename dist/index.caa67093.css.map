@@ -1,0 +1,1 @@
+{"mappings":"AAGA;EACE,OAHM","sources":["src/index.scss"],"sourcesContent":["//dummy test code\n$color: steelblue;\n\n.my-flix {\n  color: $color;\n}\n"],"names":[],"version":3,"file":"index.caa67093.css.map","sourceRoot":"/__parcel_source_root/"}
