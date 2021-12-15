@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 export class MainView extends React.Component {
@@ -22,28 +22,35 @@ export class MainView extends React.Component {
             // { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...'},
             // { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...'}
         ],
-        selectedMovie: null
+        selectedMovie: null,
+        user:null
         }
     }
     componentDidMount(){
-      axios.get('https://flexmyflix.herokuapp.com/movies')
-        .then(response => {
-          this.setState({
-            movies: response.data
-          });
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      // axios.get('https://flexmyflix.herokuapp.com/movies')
+      //   .then(response => {
+      //     this.setState({
+      //       movies: response.data
+      //     });
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   });
     }
     
-    setSelectedMovie(newSelectedMovie) {
+    setSelectedMovie(movie) {
         this.setState({
-        selectedMovie: newSelectedMovie
+        selectedMovie: movie
         });
     }
+    onLoggedIn(user) {
+      this.setState({
+        user
+      });
+    }
     render() {
-        const { movies, selectedMovie } = this.state;
+        const { movies, selectedMovie, user } = this.state;
+        if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
         if (movies.length === 0) return <div className="main-view" />;//The list is empty!</div>;
         return (
             <div className="main-view">
