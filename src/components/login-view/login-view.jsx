@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -10,7 +11,7 @@ export function LoginView(props) {
     console.log(username, password);
     /* Send a request to the server for authentication */
     /* then call props.onLoggedIn(username) */
-    // props.onLoggedIn(username);
+     props.onLoggedIn(username);
   };
 
   return (
@@ -29,19 +30,10 @@ export function LoginView(props) {
 }
 
 LoginView.propTypes = {
-    username: PropTypes.shape
-    movie: PropTypes.shape({
-      Title: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-      ImageURL: PropTypes.string.isRequired,
-      Genre: PropTypes.shape({
-        Name: PropTypes.string.isRequired
-      }),
-      Director: PropTypes.shape({  //?
-        Name: PropTypes.string.isRequired,
-        Bio: PropTypes.string.isRequired
-      })
-    }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
-  };
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired 
+  }),
+  onLoggedIn: PropTypes.func.isRequired
+};
   
