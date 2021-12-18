@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -26,3 +27,21 @@ export function LoginView(props) {
     </form>
   );
 }
+
+LoginView.propTypes = {
+    username: PropTypes.shape
+    movie: PropTypes.shape({
+      Title: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+      ImageURL: PropTypes.string.isRequired,
+      Genre: PropTypes.shape({
+        Name: PropTypes.string.isRequired
+      }),
+      Director: PropTypes.shape({  //?
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string.isRequired
+      })
+    }).isRequired,
+    onMovieClick: PropTypes.func.isRequired
+  };
+  
