@@ -1,13 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import {RegistrationView} from '../registration-view/registration-view';
+
+import PropTypes from 'prop-types';
+
+import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+
 export class MainView extends React.Component {
 
-
-    constructor(){
+      constructor(){
         super();
         this.state = {
         movies: [
@@ -16,7 +19,8 @@ export class MainView extends React.Component {
             // { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...'}
         ],
         selectedMovie: null,
-        user:null
+        user:null,
+        register: null
         }
     }
     componentDidMount(){
@@ -36,6 +40,13 @@ export class MainView extends React.Component {
         selectedMovie: movie
         });
     }
+
+    onRegistration(register) {
+      this.setState({
+        register
+      });
+    }
+
     onLoggedIn(user) {
       this.setState({
         user
@@ -43,9 +54,15 @@ export class MainView extends React.Component {
     }
     render() {
         const { movies, selectedMovie, user } = this.state;
-        if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-        if (movies.length === 0) return <div className="main-view" />;//The list is empty!</div>;
-        return (
+        
+        if (!user) 
+          return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+        
+        if (!user)
+          return <RegistrationView onRegistration={user => this.onRegistration(user)} />;  
+        
+        if (movies.length === 0) return <div className="main-view" />;
+          return (
             <div className="main-view">
               {selectedMovie
                 ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
@@ -57,4 +74,5 @@ export class MainView extends React.Component {
           );
         }
 }
+
 export default MainView;
