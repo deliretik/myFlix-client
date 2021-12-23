@@ -44,7 +44,7 @@ export function LoginView(props) {
       <Button type="submit">Register</Button>
     </Form>
   );
-}
+
 
 LoginView.propTypes = {
   user: PropTypes.shape({
