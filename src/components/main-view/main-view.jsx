@@ -21,16 +21,45 @@ export class MainView extends React.Component {
     }
     
     componentDidMount(){
-      axios.get('https://flexmyflix.herokuapp.com/movies')
-        .then(response => {
-          this.setState({
-            movies: response.data
-          });
-        })
-        .catch(error => {
-          console.log(error);
+      let accessToken = localStorage.getItem('token');
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem('user')
         });
+        this.getMovies(accessToken);
+      }
     }
+
+    onLoggedOut() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      this.setState({
+        user: null
+      });
+    }
+
+    // Log In
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.Username
+    });
+
+
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
+    //   axios.get('https://flexmyflix.herokuapp.com/movies')
+    //     .then(response => {
+    //       this.setState({
+    //         movies: response.data
+    //       });
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
+    // }
     
     setSelectedMovie(movie) {
         this.setState({
@@ -44,11 +73,21 @@ export class MainView extends React.Component {
       });
     }
 
-    onLoggedIn(user) {
-      this.setState({
-        user
+    getMovies(token) {
+      axios.get('https://flexmyflix.herokuapp.com/movies', {
+        headers: { Authorization: `Bearer ${token}`}
+      })
+      .then(response => {
+        // Assign the result to the state
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
       });
     }
+
     render() {
         const { movies, selectedMovie, user } = this.state;
         
@@ -60,6 +99,7 @@ export class MainView extends React.Component {
         
         if (movies.length === 0) return <div className="main-view" />;
           return (
+            
             <Row className="main-view justify-content-md-center">
               {selectedMovie
                 ? (
@@ -73,6 +113,7 @@ export class MainView extends React.Component {
               </Col>
               ))
               }
+              <button onClick={() => { this.onLoggedOut() }}>Logout</button>
             </Row>
           );
         }
