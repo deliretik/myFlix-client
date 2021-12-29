@@ -2,13 +2,48 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
-
+import axios from 'axios';
 
 export function RegistrationView(props) {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ birthday, setBirthday] = useState('');
+    
+    const [usernameError, setUsernameError] = useState({});
+    const [passwordError, setPasswordError] = useState({});
+    const [emailError, setEmailError] = useState({});
+    const [birthdayError, setBirthdayError] = useState({});
+
+    const validate = () => {
+      let isReq = true;
+      if(name){
+        setValues({...values, nameErr: 'Name is required'});
+        isReq = false;
+      }
+      if(!username){
+        setValues({...values, usernameErr: 'Username is required'});
+        isReq = false;
+      } else if {
+        setValues({...values, usernameErr: 'Username must be 5 characters long'})
+        isReq = false;
+      }
+      if(!password){
+        setValues({...values, passwordErr: 'Password required'});
+        isReq = false;
+      } else if(password.length < 6){
+        setValues({...values, passwordErr: 'Password must be 6 characters long'})
+        isReq = false;
+      }
+      if(!email){
+        setValues({...values, emailErr: 'Email required'});
+        isReq = false;
+      } else if(email.indexOf('@') === -1){
+        setValues({...values, emailErr: 'Email is invalid'});
+        isReq = false;
+      }
+      return isReq;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();

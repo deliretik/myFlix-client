@@ -7,31 +7,25 @@ import Col from 'react-bootstrap/Col';
 import {CardColumns} from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 
+import { Link } from "react-router-dom";
+
 
 export class MovieCard extends React.Component {
   render() {
-    const{ movie, onMovieClick } = this.props;  
+    const {movie} = this.props;  
     return (
-      <Row className="main-view justify-content-md-center">
-      <CardColumns>
-       <Card border="light" className="card-container movie-card mb-2 " >
-       <Col xs={12} md={10} className="image-size justify-content-md-center">
-         <Card.Img variant="top" src={movie.ImagePath} fluid />
-         </Col>
-         <Card.Body className="card p-0"  style={{ width: '11rem', }}>
-           <Card.Title>{movie.Title}</Card.Title>
-           <Card.Text>{movie.Description}</Card.Text>
-           <Button onClick={() => onMovieClick(movie)} variant="link">Open</Button>
-         </Card.Body>
-       </Card>
-       </CardColumns>
-     </Row>
-
-
-      //<div className="movie-card" onClick={() => { onMovieClick(movie);}}>{movie.Title}</div>;
-      //<div onClick={() => onMovieClick(movie)} className="movie-card">{movie.Title}</div>
-      );
-    }
+      <Card>
+        <Card.Img variant="top" src={movie.ImagePath} />
+        <Card.Body>
+          <Card.Title>{movie.Title}</Card.Title>
+          <Card.Text>{movie.Description}</Card.Text>
+          <Link to={`/movies/${movie._id}`}>
+            <Button variant="link">Open</Button>
+          </Link>
+        </Card.Body>
+      </Card>
+    );
+  }
 }
 
 
