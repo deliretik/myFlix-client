@@ -9,6 +9,22 @@ import Badge from 'react-bootstrap/Badge';
 
 export class MovieView extends React.Component {
   
+
+  addFavorite() {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+
+    axios.post(`https://flexmyflix.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        alert(`Added to Favorites List`)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   render() {
     const{ movie, onBackClick } = this.props;  
     return (
