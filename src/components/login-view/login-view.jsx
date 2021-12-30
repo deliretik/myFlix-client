@@ -1,79 +1,101 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
+import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
-//hooks for input
-  const [ usernameErr, setUsernameErr ] = useState('');
-  const [ passwordErr, setPasswordErr ] = useState('');
 
-  // validate user inputs
-const validate = () => {
-  let isReq = true;
-  if(!username){
-   setUsernameErr('Username Required');
-   isReq = false;
-  }else if(username.length < 2){
-   setUsernameErr('Username must be 2 characters long');
-   isReq = false;
-  }
-  if(!password){
-   setPasswordErr('Password Required');
-   isReq = false;
-  }else if(password.length < 6){
-   setPassword('Password must be 6 characters long');
-   isReq = false;
-  }
+  const [usernameError, setUsernameError] = useState({});
+  const [passwordError, setPasswordError] = useState({});
 
-  return isReq;
-}
 
-const handleSubmit = (e) => {
-e.preventDefault();
-const isReq = validate();
-if(isReq) {
-  /* Send request to the server for authentication */
-  axios.post('https://flexmyflix.herokuapp.com/login', {
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let setisValid = formValidation();
+    if (setisValid) {
+    axios.post('https://flexmyflix.herokuapp.com/login', {
       Username: username,
       Password: password
-  })
-  .then(response =>{
+    })
+    .then(response => {
       const data = response.data;
       props.onLoggedIn(data);
-  })
-  .catch(e => {
-    console.log('no such user')
-  });
+    })
+    .catch(e => {
+      console.log('no such user')
+    });
+  };
 }
-};
+
+  const formValidation = () => {
+    let usernameError = {};
+    let passwordError = {};
+    let isValid = true;
+
+    if (username.trim().length < 4) {
+      usernameError.usernameShort = "Username must be at least 4 characters.";
+      isValid = false;
+    }
+    if (password.trim().length < 5) {
+      passwordError.passwordMissing = "Password must be at least 5 characters.";
+      isValid = false;
+    }
+  
+    setUsernameError(usernameError);
+    setPasswordError(passwordError);
+    return isValid;
 };
 
   return (
+
     <Form>
       <Form.Group controlId="formUsername">
-      <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" placeholder="Enter username" onChange={e => setUsername(e.target.value)} />
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+        {Object.keys(usernameError).map((key) => {
+          return (
+            <div key={key}>
+              {usernameError[key]}
+            </div>
+          );
+        })}
       </Form.Group>
       <Form.Group controlId="formPassword">
         <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+        <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+        {Object.keys(passwordError).map((key) => {
+            return (
+              <div key={key}>
+                {passwordError[key]}
+              </div>
+            );
+          })}
       </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>Sign in</Button>
-      <Button type="submit">Register</Button>
+     
+    <span>
+      <Button variant="dark" size="sm" type="submit" onClick={handleSubmit}>
+        Login
+      </Button>
+      {' '}
+      <Link to="/register"><Button variant="dark" size="sm" type="button">Join</Button>
+      </Link>
+    </span>
+      
     </Form>
   );
-
+}
 
 LoginView.propTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired 
-  }),
-  onLoggedIn: PropTypes.func.isRequired
-};
+    user: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+    }),
+    onLoggedIn: PropTypes.func.isRequired,
+  };
   
