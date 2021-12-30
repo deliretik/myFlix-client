@@ -34,7 +34,7 @@ export class MovieView extends React.Component {
       </div>
       <div className="movie-title">
         <h1>
-          <Badge bg="primary">
+          <Badge bg="secondary">
             <span className="value">{movie.Title}</span>
           </Badge></h1>
       </div>

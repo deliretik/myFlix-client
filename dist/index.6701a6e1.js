@@ -27681,7 +27681,7 @@ class MovieView extends _reactDefault.default.Component {
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_badgeDefault.default, {
-                            bg: "primary",
+                            bg: "secondary",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
                                 lineNumber: 37
@@ -29472,7 +29472,7 @@ class ProfileView extends _reactDefault.default.Component {
                                     ]
                                 }),
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                    variant: "dark",
+                                    variant: "danger",
                                     size: "sm",
                                     type: "submit",
                                     __source: {
@@ -29497,7 +29497,7 @@ class ProfileView extends _reactDefault.default.Component {
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                        variant: "danger",
+                                        variant: "warning",
                                         size: "sm",
                                         onClick: (e)=>this.handleDeleteUser(e)
                                         ,

@@ -207,13 +207,13 @@ class ProfileView extends React.Component {
                 <Form.Control type="date" placeholder="Change Birthday" onChange={(e) => this.setBirthday(e.target.value)} />
               </Form.Group>
               
-              <Button variant='dark' size="sm" type="submit">
+              <Button variant='danger' size="sm" type="submit">
                 Update
               </Button>
             
               <h6>Delete account</h6>     
                 <div>
-                <Button variant='danger' size="sm" onClick={(e) => 
+                <Button variant='warning' size="sm" onClick={(e) => 
                   this.handleDeleteUser(e)}>
                   Delete account
                  </Button>
