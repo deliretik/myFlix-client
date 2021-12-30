@@ -35,6 +35,24 @@ export class MainView extends React.Component {
       }
     }
 
+    onLoggedOut() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      this.setState({
+        user: null
+      });
+    }
+
+    onLoggedIn(authData) {
+      console.log(authData);
+      this.setState({
+        user: authData.user.Username
+      });
+      localStorage.setItem('token', authData.token);
+      localStorage.setItem('user', authData.user.Username);
+      this.getMovies(authData.token);
+    }
+
     getMovies(token) {
       axios.get('https://flexmyflix.herokuapp.com/movies', {
         headers: { Authorization: `Bearer ${token}`}
@@ -48,59 +66,33 @@ export class MainView extends React.Component {
         console.log(error);
       });
     }
-    
-    // onLoggedOut() {
-    //   localStorage.removeItem('token');
-    //   localStorage.removeItem('user');
-    //   this.setState({
-    //     user: null
-    //   });
-    // }
-
-    // Log In
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-
-
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
-    this.getMovies(authData.token);
-  }
-    //   axios.get('https://flexmyflix.herokuapp.com/movies')
-    //     .then(response => {
-    //       this.setState({
-    //         movies: response.data
-    //       });
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-    // }
-    
-    // setSelectedMovie(movie) {
-    //     this.setState({
-    //     selectedMovie: movie
-    //     });
-    // }
-
-    // onRegistration(register) {
-    //   this.setState({
-    //     register
-    //   });
-    // }
-
-    
-    render() {
-        const { movies, user } = this.state;
-        
-        // if (!user) 
-        //   return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-        
-        // if (!user)
-        //   return <RegistrationView onRegistration={user => this.onRegistration(user)} />;  
+  
+    getUsers(token) {
+      axios.post('https://myflixdb17.herokuapp.com/users', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(response => {
+          this.setState({
+            users: response.data
+          });
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  
+    //new registered user   
+    onRegister(register) {
+      this.setState({
+        register: register,
+      });
+    }
+  
+      render() {
+          const { movies, user} = this.state;
+           //no user, LoginView is rendered. if user logged in, user details are passed as a prop to the LoginView
+           console.log("render", user);
       
           return (
             <Router>
