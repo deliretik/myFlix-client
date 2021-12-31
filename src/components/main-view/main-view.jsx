@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Redirect } from "react-router-dom";
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -95,11 +95,11 @@ export class MainView extends React.Component {
            console.log("render", user);
       
           return (
-            <Router>
+            <Routes>
             <NavBar user={user} />
     
             <Row className="main-view justify-content-md-center">
-    
+          
             <Route exact path="/" render={() => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -170,7 +170,7 @@ export class MainView extends React.Component {
             }} />
   
           </Row>
-        </Router>
+        </Routes>
           );
         }
 };
