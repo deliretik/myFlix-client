@@ -23015,7 +23015,7 @@ class MainView extends _reactDefault.default.Component {
                         lineNumber: 101
                     },
                     __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsxs("routes", {
+                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Routes, {
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
                             lineNumber: 102

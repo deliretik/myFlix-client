@@ -99,7 +99,7 @@ export class MainView extends React.Component {
             <NavBar user={user} />
     
             <Row className="main-view justify-content-md-center">
-          <routes>
+          <Routes>
            <Route exact path="/" render={() => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -173,7 +173,7 @@ export class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return <ProfileView history={history} movies={movies} />
             }} />
-        </routes>
+        </Routes>
       </Row>
     </Router>
     );
