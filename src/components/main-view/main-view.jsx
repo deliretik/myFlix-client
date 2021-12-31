@@ -100,7 +100,7 @@ export class MainView extends React.Component {
     
             <Row className="main-view justify-content-md-center">
           <routes>
-            <Route exact path="/" render={() => {
+           <Route exact path="/" render={() => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                 </Col>
@@ -111,18 +111,21 @@ export class MainView extends React.Component {
                 </Col>
               ))
             }} />
-                <Route path="/register" render={() => {
+
+           <Route path="/register" render={() => {
                   if (user) return <Redirect to = "/" />
               return <Col>
                 <RegistrationView />
                 </Col>
             }} />
-          <Route path="/profile" render={() => 
+
+           <Route path="/profile" render={() => 
               {
                 if (!user) return <Col>
                   <ProfileView />
                 </Col>
               }} />
+
           <Route path="/movies/:movieId" render={({ match, history }) => {
                 if (!user) return <Col>
                   <LoginView onLoggedIn={user => 
@@ -135,6 +138,7 @@ export class MainView extends React.Component {
                     history.goBack()} />
                 </Col>
               }} />
+
           <Route path="/directors/:name" render={({ match, history }) => 
               {
             if (!user) return <Col>
@@ -149,6 +153,7 @@ export class MainView extends React.Component {
             </Col>
           }
           } />
+
           <Route path="/genres/:name" render={({ match, history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => 
@@ -169,10 +174,10 @@ export class MainView extends React.Component {
               return <ProfileView history={history} movies={movies} />
             }} />
         </routes>
-          </Row>
-        </Router>
-          );
-        }
+      </Row>
+    </Router>
+    );
+  }
 };
 
 export default MainView;
