@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from "react-bootstrap/Image";
-import CardColumns from 'react-bootstrap/CardColumns'
+import CardColumns from 'react-bootstrap';
 
 
 export class MovieCard extends React.Component {
