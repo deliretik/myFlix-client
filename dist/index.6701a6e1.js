@@ -22968,7 +22968,7 @@ class MainView extends _reactDefault.default.Component {
         });
     }
     getUsers(token) {
-        _axiosDefault.default.post('https://myflixdb17.herokuapp.com/users', {
+        _axiosDefault.default.post('https://flexmyflix.herokuapp.com/users', {
             headers: {
                 Authorization: `Bearer ${token}`
             }

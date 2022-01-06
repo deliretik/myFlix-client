@@ -68,7 +68,7 @@ export class MainView extends React.Component {
     }
   
     getUsers(token) {
-      axios.post('https://myflixdb17.herokuapp.com/users', {
+      axios.post('https://flexmyflix.herokuapp.com/users', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(response => {
