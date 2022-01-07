@@ -5,6 +5,7 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { NavBar } from '../navbar-view/navbar-view';
 import Row from "react-bootstrap";
 import Col from "react-bootstrap";
 import ProfileView  from '../profile-view/profile-view';
@@ -12,7 +13,6 @@ import GenreView  from '../genre-view/genre-view';
 import DirectorView  from '../director-view/director-view';
 import Redirect from 'react-router';
 
-import NavBar  from '../navbar-view/navbar-view';
 
 export class MainView extends React.Component {
 
@@ -177,4 +177,4 @@ export class MainView extends React.Component {
   }
 };
 
-// export default MainView;
+ export default MainView;
