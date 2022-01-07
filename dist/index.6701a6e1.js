@@ -22919,6 +22919,8 @@ var _genreView = require("../genre-view/genre-view");
 var _genreViewDefault = parcelHelpers.interopDefault(_genreView);
 var _directorView = require("../director-view/director-view");
 var _directorViewDefault = parcelHelpers.interopDefault(_directorView);
+var _reactRouter = require("react-router");
+var _reactRouterDefault = parcelHelpers.interopDefault(_reactRouter);
 var _navbarView = require("../navbar-view/navbar-view");
 var _navbarViewDefault = parcelHelpers.interopDefault(_navbarView);
 class MainView extends _reactDefault.default.Component {
@@ -22994,7 +22996,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 98
+                lineNumber: 97
             },
             __self: this,
             children: [
@@ -23002,7 +23004,7 @@ class MainView extends _reactDefault.default.Component {
                     user: user,
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 99
+                        lineNumber: 98
                     },
                     __self: this
                 }),
@@ -23010,7 +23012,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 101
+                        lineNumber: 100
                     },
                     __self: this,
                     children: [
@@ -23018,30 +23020,33 @@ class MainView extends _reactDefault.default.Component {
                             exact: true,
                             path: "/",
                             render: ()=>{
-                                // if (!user) return <Col>
-                                //   <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                                //   </Col>
-                                // if (movies.length === 0) return <div className="main-view" />;
-                                // return movies.map(m => (
-                                //   <Col md={3} key={m._id}>
-                                //   <MovieCard movie={m} />
-                                //   </Col>
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrapDefault.default, {
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_registrationView.RegistrationView, {
+                                if (!user) return;
+                                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrapDefault.default, {
+                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+                                        onLoggedIn: (user1)=>this.onLoggedIn(user1)
                                     })
+                                });
+                                if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    className: "main-view"
                                 }));
-                            //))
+                                return movies.map((m)=>/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrapDefault.default, {
+                                        md: 3,
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+                                            movie: m
+                                        })
+                                    }, m._id)
+                                );
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 103
+                                lineNumber: 102
                             },
                             __self: this
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                             path: "/register",
                             render: ()=>{
-                                if (user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Redirect, {
+                                if (user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDefault.default, {
                                     to: "/"
                                 }));
                                 return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrapDefault.default, {
@@ -23051,7 +23056,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 118
+                                lineNumber: 115
                             },
                             __self: this
                         }),
@@ -23065,7 +23070,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 125
+                                lineNumber: 122
                             },
                             __self: this
                         }),
@@ -23091,7 +23096,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 132
+                                lineNumber: 128
                             },
                             __self: this
                         }),
@@ -23117,7 +23122,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 145
+                                lineNumber: 141
                             },
                             __self: this
                         }),
@@ -23143,7 +23148,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 160
+                                lineNumber: 154
                             },
                             __self: this
                         }),
@@ -23154,17 +23159,15 @@ class MainView extends _reactDefault.default.Component {
                                 if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
                                     onLoggedIn: (data)=>this.onLoggedIn(data)
                                 }));
-                                if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                    className: "main-view"
-                                }));
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_profileViewDefault.default, {
+                                if (movies.length === 0) return;
+                                /*#__PURE__*/ _jsxRuntime.jsx(_profileViewDefault.default, {
                                     history: history,
                                     movies: movies
-                                }));
+                                });
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 173
+                                lineNumber: 167
                             },
                             __self: this
                         })
@@ -23181,7 +23184,7 @@ exports.default = MainView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"daOLc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7HVV8","axios":"iYoWk","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","../login-view/login-view":"054li","../registration-view/registration-view":"aP2YV","react-router-dom":"cpyQW","../profile-view/profile-view":"2E7Aw","../genre-view/genre-view":"8WCoL","../director-view/director-view":"ck15y","../navbar-view/navbar-view":"j0Dt2","react-bootstrap":"h2YVd"}],"iYoWk":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"daOLc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7HVV8","axios":"iYoWk","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","../login-view/login-view":"054li","../registration-view/registration-view":"aP2YV","react-router-dom":"cpyQW","../profile-view/profile-view":"2E7Aw","../genre-view/genre-view":"8WCoL","../director-view/director-view":"ck15y","../navbar-view/navbar-view":"j0Dt2","react-bootstrap":"h2YVd","react-router":"l4MNa"}],"iYoWk":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"3QmO2"}],"3QmO2":[function(require,module,exports) {

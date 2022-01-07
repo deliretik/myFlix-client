@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -10,6 +10,7 @@ import Col from "react-bootstrap";
 import ProfileView  from '../profile-view/profile-view';
 import GenreView  from '../genre-view/genre-view';
 import DirectorView  from '../director-view/director-view';
+import Redirect from 'react-router';
 
 import NavBar  from '../navbar-view/navbar-view';
 
@@ -20,8 +21,6 @@ export class MainView extends React.Component {
         this.state = {
         movies: [],
         user:null
-        //selectedMovie: null,
-        //register: null
         };
     }
 
@@ -95,35 +94,32 @@ export class MainView extends React.Component {
            console.log("render", user);
       
           return (
-            <Router>
+           <Router>
             <NavBar user={user} />
     
             <Row className="main-view justify-content-md-center">
           
            <Route exact path="/" render={() => {
-              // if (!user) return <Col>
-              //   <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              //   </Col>
-              // if (movies.length === 0) return <div className="main-view" />;
-              // return movies.map(m => (
-              //   <Col md={3} key={m._id}>
-              //   <MovieCard movie={m} />
-              //   </Col>
-              return <Col>
-                <RegistrationView />
+              if (!user) return 
+                <Col>
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                 </Col>
-              //))
+              if (movies.length === 0) return <div className="main-view" />;
+              return movies.map(m => (
+                <Col md={3} key={m._id}>
+                <MovieCard movie={m} />
+                </Col>
+              ))           
             }} />
 
            <Route path="/register" render={() => {
-                  if (user) return <Redirect to = "/" />
-              return <Col>
+              if (user) return <Redirect to = "/" />
+               return <Col>
                 <RegistrationView />
-                </Col>
+              </Col>
             }} />
 
-           <Route path="/profile" render={() => 
-              {
+           <Route path="/profile" render={() => {
                 if (!user) return <Col>
                   <ProfileView />
                 </Col>
@@ -142,8 +138,7 @@ export class MainView extends React.Component {
                 </Col>
               }} />
 
-          <Route path="/directors/:name" render={({ match, history }) => 
-              {
+          <Route path="/directors/:name" render={({ match, history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => 
                 this.onLoggedIn(user)} />
@@ -154,8 +149,7 @@ export class MainView extends React.Component {
               m.Director.Name === match.params.name).Director} onBackClick={() => 
                 history.goBack()} />
             </Col>
-          }
-          } />
+          }} />
 
           <Route path="/genres/:name" render={({ match, history }) => {
             if (!user) return <Col>
@@ -173,8 +167,8 @@ export class MainView extends React.Component {
           <Route exact path='/users/:username' render={({ history }) => {
               if (!user) return <LoginView onLoggedIn={(data) => 
                 this.onLoggedIn(data)} />;
-              if (movies.length === 0) return <div className="main-view" />;
-              return <ProfileView history={history} movies={movies} />
+              if (movies.length === 0) return 
+              <ProfileView history={history} movies={movies} />
             }} />
         
       </Row>
