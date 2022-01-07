@@ -23177,7 +23177,6 @@ class MainView extends _reactDefault.default.Component {
         }));
     }
 }
-exports.default = MainView;
 
   $parcel$ReactRefreshHelpers$35bf.postlude(module);
 } finally {
