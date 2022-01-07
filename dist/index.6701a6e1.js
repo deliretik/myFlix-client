@@ -41068,8 +41068,7 @@ class DirectorView extends _reactDefault.default.Component {
 DirectorView.propTypes = {
     director: _propTypesDefault.default.shape({
         Name: _propTypesDefault.default.string.isRequired,
-        Bio: _propTypesDefault.default.string.isRequired,
-        Birth: _propTypesDefault.default.string.isRequired
+        Bio: _propTypesDefault.default.string.isRequired
     }).isRequired
 };
 exports.default = DirectorView;
