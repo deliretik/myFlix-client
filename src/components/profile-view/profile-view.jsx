@@ -3,8 +3,6 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Button, Card, CardDeck, Form, Row } from 'react-bootstrap';
 
-import './profile-view.scss';
-
 class ProfileView extends React.Component {
   constructor() {
     super();
@@ -224,7 +222,6 @@ class ProfileView extends React.Component {
       </Row >
     );
   } 
-
 } 
 
 ProfileView.propTypes = {

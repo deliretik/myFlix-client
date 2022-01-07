@@ -8,7 +8,9 @@ import Image from "react-bootstrap/Image";
 import CardColumns from 'react-bootstrap';
 
 
+
 export class MovieCard extends React.Component {
+  
   render() {
     const{ movie, onMovieClick } = this.props;  
     return (
