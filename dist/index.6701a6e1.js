@@ -946,7 +946,6 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
 var _mainView = require("./components/main-view/main-view");
-var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 // Import statement to indicate that you need to bundle `./index.scss`
@@ -960,7 +959,7 @@ class MyFlixApplication extends _reactDefault.default.Component {
                 lineNumber: 13
             },
             __self: this,
-            children: /*#__PURE__*/ _jsxRuntime.jsx(_mainViewDefault.default, {
+            children: /*#__PURE__*/ _jsxRuntime.jsx(_mainView.MainView, {
                 __source: {
                     fileName: "src/index.jsx",
                     lineNumber: 14
@@ -22911,6 +22910,7 @@ var _registrationView = require("../registration-view/registration-view");
 var _loginView = require("../login-view/login-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
+var _navbarView = require("../navbar-view/navbar-view");
 var _reactBootstrap = require("react-bootstrap");
 var _reactBootstrapDefault = parcelHelpers.interopDefault(_reactBootstrap);
 var _profileView = require("../profile-view/profile-view");
@@ -22921,8 +22921,6 @@ var _directorView = require("../director-view/director-view");
 var _directorViewDefault = parcelHelpers.interopDefault(_directorView);
 var _reactRouter = require("react-router");
 var _reactRouterDefault = parcelHelpers.interopDefault(_reactRouter);
-var _navbarView = require("../navbar-view/navbar-view");
-var _navbarViewDefault = parcelHelpers.interopDefault(_navbarView);
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
@@ -23000,7 +22998,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this,
             children: [
-                /*#__PURE__*/ _jsxRuntime.jsx(_navbarViewDefault.default, {
+                /*#__PURE__*/ _jsxRuntime.jsx(_navbarView.NavBar, {
                     user: user,
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
@@ -23177,6 +23175,7 @@ class MainView extends _reactDefault.default.Component {
         }));
     }
 }
+exports.default = MainView;
 
   $parcel$ReactRefreshHelpers$35bf.postlude(module);
 } finally {
