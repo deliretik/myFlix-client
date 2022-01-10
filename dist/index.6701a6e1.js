@@ -22909,11 +22909,15 @@ var _loginView = require("../login-view/login-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 var _navbarView = require("../navbar-view/navbar-view");
+var _navbarViewDefault = parcelHelpers.interopDefault(_navbarView);
 var _reactBootstrap = require("react-bootstrap");
 var _reactBootstrapDefault = parcelHelpers.interopDefault(_reactBootstrap);
 var _profileView = require("../profile-view/profile-view");
+var _profileViewDefault = parcelHelpers.interopDefault(_profileView);
 var _genreView = require("../genre-view/genre-view");
+var _genreViewDefault = parcelHelpers.interopDefault(_genreView);
 var _directorView = require("../director-view/director-view");
+var _directorViewDefault = parcelHelpers.interopDefault(_directorView);
 var _reactRouter = require("react-router");
 var _reactRouterDefault = parcelHelpers.interopDefault(_reactRouter);
 //export 
@@ -22994,7 +22998,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this,
             children: [
-                /*#__PURE__*/ _jsxRuntime.jsx(_navbarView.NavBar, {
+                /*#__PURE__*/ _jsxRuntime.jsx(_navbarViewDefault.default, {
                     user: user,
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
@@ -23058,7 +23062,7 @@ class MainView extends _reactDefault.default.Component {
                             path: "/profile",
                             render: ()=>{
                                 if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrapDefault.default, {
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_profileView.ProfileView, {
+                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_profileViewDefault.default, {
                                     })
                                 }));
                             },
@@ -23107,7 +23111,7 @@ class MainView extends _reactDefault.default.Component {
                                 }));
                                 return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrapDefault.default, {
                                     md: 8,
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_directorView.DirectorView, {
+                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_directorViewDefault.default, {
                                         director: movies.find((m)=>m.Director.Name === match.params.name
                                         ).Director,
                                         onBackClick: ()=>history.goBack()
@@ -23133,7 +23137,7 @@ class MainView extends _reactDefault.default.Component {
                                 }));
                                 return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrapDefault.default, {
                                     md: 8,
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_genreView.GenreView, {
+                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_genreViewDefault.default, {
                                         genre: movies.find((m)=>m.Genre.Name === match.params.name
                                         ).Genre,
                                         onBackClick: ()=>history.goBack()
@@ -23154,7 +23158,7 @@ class MainView extends _reactDefault.default.Component {
                                     onLoggedIn: (data)=>this.onLoggedIn(data)
                                 }));
                                 if (movies.length === 0) return;
-                                /*#__PURE__*/ _jsxRuntime.jsx(_profileView.ProfileView, {
+                                /*#__PURE__*/ _jsxRuntime.jsx(_profileViewDefault.default, {
                                     history: history,
                                     movies: movies
                                 });
