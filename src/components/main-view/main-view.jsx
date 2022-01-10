@@ -14,7 +14,8 @@ import DirectorView  from '../director-view/director-view';
 import Redirect from 'react-router';
 
 
-export class MainView extends React.Component {
+//export 
+class MainView extends React.Component {
 
       constructor(){
         super();
