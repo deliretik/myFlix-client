@@ -3,7 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Button, Card, CardDeck, Form, Row } from 'react-bootstrap';
 
-class ProfileView extends React.Component {
+export class ProfileView extends React.Component {
   constructor() {
     super();
 
