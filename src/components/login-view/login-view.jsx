@@ -6,7 +6,8 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 
-export function LoginView(props) {
+//export 
+function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
@@ -99,3 +100,4 @@ LoginView.propTypes = {
     onLoggedIn: PropTypes.func.isRequired,
   };
   
+  export default LoginView;
