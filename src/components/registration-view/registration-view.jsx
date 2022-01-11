@@ -7,7 +7,8 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/row';
 import { Link } from "react-router-dom";
 
-export function RegistrationView(props) {
+//export 
+function RegistrationView(props) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -147,3 +148,5 @@ RegistrationView.propTypes = {
     Birthday: PropTypes.string.isRequired
   }),
 };
+
+export default RegistrationView;
