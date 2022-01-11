@@ -7,7 +7,8 @@ import axios from 'axios';
 import Badge from 'react-bootstrap/Badge';
 
 
-export class MovieView extends React.Component {
+//export 
+class MovieView extends React.Component {
   
 
   addFavorite() {
@@ -79,3 +80,5 @@ MovieView.propTypes = {
     }),
   }).isRequired
 };
+
+export default MovieView;
