@@ -157,8 +157,7 @@ class ProfileView extends React.Component {
            {FavoriteMovies.length === 0 && <h6 className="text-center">Add favourite </h6>}
 
             <div className="favorites-movies ">
-              {FavoriteMovies.length > 0 &&
-                movies.map((movie) => {
+              {FavoriteMovies.length > 0 && movies.map((movie) => {
                   if (movie._id === FavoriteMovies.find((favMovie) => favMovie === movie._id)) {
                     return (
                       <CardDeck className="movie-card-deck" key={movie._id}>

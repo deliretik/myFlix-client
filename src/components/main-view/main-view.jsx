@@ -138,12 +138,9 @@ class MainView extends React.Component {
             }} />
 
           <Route exact path='/users/:username' render={({ history }) => {
-              if (!user) return <LoginView onLoggedIn={(data) => 
-                this.onLoggedIn(data)} />;
-              if (movies.length === 0) return 
-              <ProfileView history={history} movies={movies} />
-            }} />
-        
+              if (!user) return <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />;
+              if (movies.length === 0) return <ProfileView history={history} movies={movies} />
+            }} /> 
       </Row>
     </Router>
     );
