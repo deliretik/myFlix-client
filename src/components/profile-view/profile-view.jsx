@@ -7,7 +7,6 @@ import { Button, Card, CardDeck, Form, Row } from 'react-bootstrap';
 class ProfileView extends React.Component {
   constructor() {
     super();
-
     this.state = {
       Username: null,
       Password: null,
@@ -149,8 +148,7 @@ class ProfileView extends React.Component {
     const { FavoriteMovies, validated } = this.state;
     const { movies } = this.props;
 
-    return (
-       <Row className="profile-view">
+    return ( <Row className="profile-view">
         <Card className="profile-card">
           <h2>Favorites</h2>
           <Card.Body>
@@ -159,7 +157,7 @@ class ProfileView extends React.Component {
             <div className="favorites-movies ">
               {FavoriteMovies.length > 0 && movies.map((movie) => {
                   if (movie._id === FavoriteMovies.find((favMovie) => favMovie === movie._id)) {
-                    return (
+                    return ( 
                       <CardDeck className="movie-card-deck" key={movie._id}>
                         <Card className="favorites-item card-content" style={{ width: '16rem' }} >
                           <Card.Img style={{ width: '15rem' }} className="movieCard" variant="top" src={movie.ImageUrl} />
