@@ -42684,7 +42684,9 @@ var _colDefault = parcelHelpers.interopDefault(_col);
 var _reactRedux = require("react-redux");
 var _visibilityFilterInput = require("../visibility-filter-input/visibility-filter-input");
 var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
+//import { MovieCard } from '../movie-card/movie-card';
 var _movieCard = require("../movie-card/movie-card");
+var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
 const mapStateToProps = (state)=>{
     const { visibilityFilter  } = state;
     return {
@@ -42732,7 +42734,7 @@ function MoviesList(props) {
                         lineNumber: 27
                     },
                     __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCardDefault.default, {
                         movie: m,
                         __source: {
                             fileName: "src/components/movies-list/movies-list.jsx",
