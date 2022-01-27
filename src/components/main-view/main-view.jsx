@@ -13,7 +13,7 @@ import ProfileView from '../profile-view/profile-view';
 import GenreView from '../genre-view/genre-view';
 import DirectorView from '../director-view/director-view';
 import Redirect from 'react-router';
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 // we haven't written this one yet
 import MoviesList from '../movies-list/movies-list';
 //export 
@@ -150,6 +150,6 @@ class MainView extends React.Component {
 }
 
 let mapStateProps = state => {
-  return { movies: state.movies }
+  return { movies: state.movies, user: state.user }
 }
- export default connect(mapStateProps, { setMovies } )(MainView);
+ export default connect(mapStateProps, { setMovies, setUser } )(MainView);
