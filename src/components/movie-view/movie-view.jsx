@@ -5,8 +5,13 @@ import Badge from 'react-bootstrap/Badge';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import Badge from 'react-bootstrap/Badge';
+import { connect } from 'react-redux';
 
 
+const mapStateToProps = state => {
+  const {movies, user} = state;
+  return {movies, user};
+};
 //export 
 class MovieView extends React.Component {
   
@@ -81,4 +86,4 @@ MovieView.propTypes = {
   }).isRequired
 };
 
-export default MovieView;
+export default connect(mapStateToProps)(MovieView);
